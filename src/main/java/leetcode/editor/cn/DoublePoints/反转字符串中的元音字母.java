@@ -32,41 +32,39 @@ import java.lang.Character;
 public class 反转字符串中的元音字母{
     public static void main(String[] args){
         Solution solution = new 反转字符串中的元音字母().new Solution();
-        System.out.println(solution.reverseVowels("AaEeIiOoUu"));
+        System.out.println(solution.reverseVowels("hello"));
     }
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public String reverseVowels(String s) {
         int front = 0;
-        int back = s.length()-1;
+
         char[] chars = s.toCharArray();
+        int back = chars.length-1;
 
+        while (front<=back) {
 
-        while (front<=back){
-            Character frontChar = chars[front];
-            Character backChar = chars[back];
             Character temp;
-
-            if(isVowel(frontChar)){
-                while(back >= front && (!isVowel(backChar))){
-                    back -= 1;
-                    backChar = chars[back];
-                }
-                if(isVowel(backChar)){
-                    temp = frontChar;
-                    chars[front] = backChar;
-                    chars[back] = temp;
-                    front += 1;
-                    back -= 1;
-                }
-
-            }else{
-                front += 1;
+            while (front<s.length() && (!isVowel(chars[front]))){
+                front+=1;
             }
+            while (back>=0 && (!isVowel(chars[back]))){
+                back-=1;
+            }
+            if(back<front){
+                break;
+            }
+            temp = chars[front];
+            chars[front] = chars[back];
+            chars[back] = temp;
+
+            front += 1;
+            back -= 1;
 
         }
 
         return new String(chars);
+
 
     }
     public boolean isVowel(char ch){  // 判断是否是元音字母
