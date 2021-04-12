@@ -28,6 +28,7 @@ public class 反转链表{
  * }
  */
 class Solution {
+<<<<<<< HEAD
     class ListNode {
       int val;
       ListNode next;
@@ -35,6 +36,8 @@ class Solution {
       ListNode(int val) { this.val = val; }
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
   }
+=======
+>>>>>>> baa9bb3ae1c8db2fbb854e06a09e5281a101195e
     public ListNode reverseList(ListNode head) {
         ListNode prev = null;
         ListNode curr = head;
