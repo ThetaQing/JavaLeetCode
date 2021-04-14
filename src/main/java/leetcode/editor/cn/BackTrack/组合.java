@@ -1,4 +1,4 @@
-package main.java.leetcode.editor.cn;
+package main.java.leetcode.editor.cn.BackTrack;
 
 //给定两个整数 n 和 k，返回 1 ... n 中所有可能的 k 个数的组合。 
 //
@@ -37,22 +37,23 @@ class Solution {
         return res;
     }
     public void backTrack(int n, int num, int k){
-        if(n-num<=k){
-            return;
-        }
-        if(k<=0){
+
+        if(pre.size()==k){
             res.add(new ArrayList<>(pre));
             return;
         }
-        for (int i = num; i <= n; i++) {
-            pre.push(i);
-            backTrack(n,num+1,k-1);
-            pre.pop();
-            backTrack(n,num+1,k);
+        if(n-num+1+pre.size()<k){
+            return;
         }
+        pre.push(num);
+        backTrack(n,num+1,k);
+        pre.pop();
+        backTrack(n,num+1,k);
 
     }
 }
+
+
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
